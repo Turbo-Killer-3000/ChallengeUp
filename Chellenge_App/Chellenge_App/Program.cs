@@ -84,10 +84,9 @@
 
 //Console.WriteLine("dane twojego pracownika to  " +  name + lastname + age);   
 
-
 Employee user1 = new Employee("Stefan", "Baranowski", "26", "71");
 Employee user2 = new Employee("Mieciu", "Kotowski", "32", "68");
-Employee user3 = new Employee("Kot", "Człowiekowski", "54", "72" );
+Employee user3 = new Employee("Kot", "Człowiekowski", "54", "72");
 
 user1.Addscore(8);
 user1.Addscore(1);
@@ -125,7 +124,7 @@ class Employee
         this.Lastname = lastname;
         this.Age = age;
         this.Score = score;
-    } 
+    }
     public string Name { get; private set; }
 
 
@@ -148,6 +147,6 @@ class Employee
 
     public void Addscore(int number)
     {
-        this.score.Add(number); 
+        this.score.Add(number);
     }
 }
