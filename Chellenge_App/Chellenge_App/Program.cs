@@ -125,20 +125,31 @@ List<Employee> employees = new List<Employee>()
 int maxResult = 0;
 Employee employeeWithMaxResult = null;
 
-foreach (var user in employees)
+foreach (var enployee in employees)
 {
     if(employee1.Result > maxResult)
     {
         employeeWithMaxResult = employee1;
     }
-    if(employee2.Result > maxResult)
+    if(employee2.Result > employee1.Result)
     {
-        employeeWithMaxResult = employee2;
+        employeeWithMaxResult = employee2;    
     }
-    if (employee3.Result > maxResult)
+    if(employee3.Result > employee2.Result)
     {
         employeeWithMaxResult = employee3;
     }
+    else if(employee3.Result > employee1.Result)
+    {
+        employeeWithMaxResult = employee3;
+    }
+    //{
+    //    employeeWithMaxResult = employee2;
+    //}
+    //if (employee3.Result > maxResult)
+    //{
+    //    employeeWithMaxResult = employee3;
+    //}
 }
 Console.WriteLine("The best employee is :");
 
