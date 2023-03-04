@@ -84,69 +84,64 @@
 
 //Console.WriteLine("dane twojego pracownika to  " +  name + lastname + age);   
 
-Employee user1 = new Employee("Stefan", "Baranowski", "26", "71");
-Employee user2 = new Employee("Mieciu", "Kotowski", "32", "68");
-Employee user3 = new Employee("Kot", "Człowiekowski", "54", "72");
+using Chellenge_App;
 
-user1.Addscore(8);
-user1.Addscore(1);
-user1.Addscore(10);
-user1.Addscore(7);
-user1.Addscore(4);
+Employee employee1 = new Employee("Stefan", "Baranowski", "26");
+Employee employee2 = new Employee("Marcin", "Kotowski", "32" );
+Employee employee3 = new Employee("Kot", "Człowiekowski", "54");
 
-user2.Addscore(8);
-user2.Addscore(9);
-user2.Addscore(5);
-user2.Addscore(10);
-user2.Addscore(2);
+employee1.Addscore(8);
+employee1.Addscore(1);
+employee1.Addscore(10);
+employee1.Addscore(7);
+employee1.Addscore(4);
 
-user3.Addscore(0);
-user3.Addscore(9);
-user3.Addscore(7);
-user3.Addscore(5);
-user3.Addscore(3);
+employee2.Addscore(8);
+employee2.Addscore(9);
+employee2.Addscore(5);
+employee2.Addscore(10);
+employee2.Addscore(2);
 
-var result = user1.Result;
-Console.WriteLine(result);
+employee3.Addscore(0);
+employee3.Addscore(9);
+employee3.Addscore(7);
+employee3.Addscore(5);
+employee3.Addscore(3);
 
-var result2 = user2.Result;
-Console.WriteLine(result2);
+var result = employee1.Result;
+//Console.WriteLine(result);
 
-var result3 = user3.Result;
-Console.WriteLine(result3);
-class Employee
+var result2 = employee2.Result;
+//Console.WriteLine(result2);
+
+var result3 = employee3.Result;
+//Console.WriteLine(result3);
+
+List<Employee> employees = new List<Employee>()
 {
-    private List<int> score = new List<int>();
+            employee1,employee2,employee3
+};
 
-    public Employee(string name, string score, string lastname, string age)
+int maxResult = 0;
+Employee employeeWithMaxResult = null;
+
+foreach (var user in employees)
+{
+    if(employee1.Result > maxResult)
     {
-        this.Name = name;
-        this.Lastname = lastname;
-        this.Age = age;
-        this.Score = score;
+        employeeWithMaxResult = employee1;
     }
-    public string Name { get; private set; }
-
-
-    public string Password { get; private set; }
-
-    public string Lastname { get; private set; }
-
-    public string Age { get; private set; }
-
-    public string Score { get; private set; }
-
-    public int Result
+    if(employee2.Result > maxResult)
     {
-        get
-        {
-            return this.score.Sum();
-        }
-
+        employeeWithMaxResult = employee2;
     }
-
-    public void Addscore(int number)
+    if (employee3.Result > maxResult)
     {
-        this.score.Add(number);
+        employeeWithMaxResult = employee3;
     }
 }
+Console.WriteLine("The best employee is :");
+
+Console.WriteLine("His name is :" + employeeWithMaxResult.Name); 
+Console.WriteLine("His last name is : " + employeeWithMaxResult.Lastname);
+Console.WriteLine ("His score is :" + employeeWithMaxResult.Result);
