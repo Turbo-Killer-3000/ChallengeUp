@@ -1,39 +1,81 @@
-﻿
+﻿using System.Diagnostics;
+
 namespace Chellenge_App
 {
-    internal class Employee
+    public class Employee
     {
-        private List<int> score = new List<int>();
+        public List<float> grades = new List<float>();
 
-        public Employee(string name, string lastname, string age)
+        public Employee(string name, string lastname)
         {
-            this.Name = name;
+            this.Name = name; 
             this.Lastname = lastname;
-            this.Age = age;
         }
-        public string Name { get; private set; }
+        public string Name {get; private set;}
 
+        public string Lastname {get; private set;}
 
-        public string Password { get; private set; }
-
-        public string Lastname { get; private set; }
-
-        public string Age { get; private set; }
-
-        public string Score { get; private set; }
-
-        public int Result
+        public void AddGrade(float grade)
         {
-            get
+            if (grade >= 0 && grade <= 100)
             {
-                return this.score.Sum();
+                this.grades.Add(grade);
             }
-
+            else
+            {
+                Console.WriteLine("Invalide grade value");
+            }
         }
 
-        public void Addscore(int number)
+        public void AddGrade(string grade)
         {
-            this.score.Add(number);
+            if(float.TryParse(grade, out float result))                                                                                                            
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("This string is not float");
+            }
+        }
+
+        public void AddGrade(double grade)
+        {
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat);
+        }
+
+        public void AddGrade(long grade)
+        {
+            float longAsFloat = (float)grade;
+            this.AddGrade(longAsFloat);
+        }
+
+        public void AddGrade(int grade)
+        {
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat);
+        }
+
+        public Statistics GetStatistics()
+        {
+             var statistics = new Statistics();
+             statistics.Average = 0;
+             statistics.Max = float.MinValue;
+             statistics.Min = float.MaxValue;
+
+            var index = 0;
+
+            while (index < this.grades.Count) ;
+            {
+                statistics.Max = Math.Max(statistics.Max, this.grades[index]);
+                statistics.Min = Math.Min(statistics.Min, this.grades[index]);
+                statistics.Average += this.grades[index];
+            } 
+
+            statistics.Average /= this.grades[index];
+
+            return statistics;
         }
     }
 }
